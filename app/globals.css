@@ -12,3 +12,188 @@ body {
 	color: var(--foreground);
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom orange hover effects */
+.hover\:bg-orange-50:hover {
+  background-color: rgb(255 247 237) !important;
+}
+
+.hover\:text-orange-600:hover {
+  color: rgb(234 88 12) !important;
+}
+
+.hover\:border-orange-200:hover {
+  border-color: rgb(254 215 170) !important;
+}
+
+/* Force orange hover effects on navigation buttons */
+nav button:hover {
+  background-color: rgb(255 247 237) !important;
+  color: rgb(234 88 12) !important;
+  border-color: rgb(254 215 170) !important;
+}
+
+/* Dashboard cards hover effects */
+.card-hover-orange:hover {
+  background-color: rgb(255 247 237) !important;
+  border-color: rgb(254 215 170) !important;
+}
+
+/* Dashboard cards text hover effects */
+.card-hover-orange:hover h3 {
+  color: rgb(234 88 12) !important;
+}
+
+.card-hover-orange:hover p {
+  color: rgb(234 88 12) !important;
+}
+
+/* Force text color changes on dashboard card hover */
+.card-hover-orange:hover .font-semibold {
+  color: rgb(234 88 12) !important;
+}
+
+.card-hover-orange:hover .text-muted-foreground {
+  color: rgb(234 88 12) !important;
+}
+
+/* Emoji text hover effects */
+.card-hover-orange:hover .text-2xl {
+  color: rgb(234 88 12) !important;
+}
+
+/* Calendar button hover effects */
+.calendar-add-button:hover {
+  background-color: rgb(234 88 12) !important;
+  border-color: rgb(234 88 12) !important;
+  color: white !important;
+  box-shadow: 0 0 20px rgba(234, 88, 12, 0.6) !important;
+  transform: translateY(-1px) !important;
+}
+
+.calendar-cancel-button:hover {
+  background-color: rgb(239 68 68) !important;
+  border-color: rgb(239 68 68) !important;
+  color: white !important;
+}
+
+.calendar-close-button:hover {
+  background-color: rgb(239 68 68) !important;
+  border-color: rgb(239 68 68) !important;
+  color: white !important;
+}
+
+/* Base styles for calendar modal buttons */
+.calendar-add-button,
+.calendar-cancel-button,
+.calendar-close-button {
+  transition: all 0.3s ease-in-out !important;
+}
+
+.calendar-add-button {
+  background-color: white !important;
+  border-color: rgb(234 88 12) !important;
+  color: rgb(234 88 12) !important;
+  transition: all 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important;
+}
+
+.calendar-cancel-button {
+  background-color: white !important;
+  border-color: rgb(239 68 68) !important;
+  color: rgb(239 68 68) !important;
+}
+
+.calendar-close-button {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: rgb(75 85 99) !important;
+}
+
+/* Calendar modal form text colors */
+.calendar-modal input,
+.calendar-modal select,
+.calendar-modal option {
+  color: rgb(234 88 12) !important;
+}
+
+.calendar-modal input::placeholder {
+  color: rgb(251 146 60) !important;
+}
+
+.calendar-modal label {
+  color: rgb(234 88 12) !important;
+  font-weight: 600;
+}
+
+/* Force modal title and date text colors */
+.calendar-modal h2.text-xl,
+.calendar-modal h2 {
+  color: rgb(234 88 12) !important;
+}
+
+.calendar-modal p.text-sm,
+.calendar-modal p {
+  color: rgb(234 88 12) !important;
+}
+
+/* Override any Tailwind text color classes */
+.calendar-modal .text-orange-600,
+.calendar-modal .text-orange-500 {
+  color: rgb(234 88 12) !important;
+}
+
+/* Force all text in modal to be orange */
+.calendar-modal * {
+  color: rgb(234 88 12) !important;
+}
+
+/* But keep button text and icons normal */
+.calendar-modal button,
+.calendar-modal button *,
+.calendar-modal svg {
+  color: inherit !important;
+}
+
+/* Override button text colors for specific buttons */
+.calendar-add-button,
+.calendar-add-button * {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.calendar-cancel-button,
+.calendar-cancel-button * {
+  color: rgb(75 85 99) !important;
+}
+
+.calendar-close-button,
+.calendar-close-button * {
+  color: rgb(75 85 99) !important;
+}
+
+/* Ensure form elements have good contrast */
+.calendar-modal input:focus,
+.calendar-modal select:focus {
+  border-color: rgb(234 88 12) !important;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2) !important;
+}
+
+.calendar-modal input,
+.calendar-modal select {
+  background-color: white !important;
+  border: 2px solid rgb(254 215 170) !important;
+}
+
+/* Modal background styling */
+.calendar-modal {
+  background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%) !important;
+  border: 2px solid rgb(254 215 170) !important;
+}
+
+/* Ultimate override for modal text */
+div.calendar-modal h2,
+div.calendar-modal p,
+div.calendar-modal label {
+  color: rgb(234 88 12) !important;
+  font-weight: 600 !important;
+}

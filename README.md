@@ -1,36 +1,155 @@
-This is a template for a whop app built in NextJS. Fork it and keep the parts you need for your app. 
+# Next.js Starter
 
-# Whop NextJS App Template
+A clean, production-ready Next.js starter template with TypeScript and Tailwind CSS.
 
-To run this project: 
+## Features
 
-1. Install dependencies with: `pnpm i`
+- ⚡ **Next.js 14** with App Router
+- 🔒 **TypeScript** for type safety
+- 🎨 **Tailwind CSS** for styling
+- 📱 **Responsive design** for all devices
+- 🚀 **Production ready** configuration
+- 🔧 **Easy to extend** and customize
 
-2. Create a Whop App on your [whop developer dashboard](https://whop.com/dashboard/developer/), then go to the "Hosting" section and:
-	- Ensure the "Base URL" is set to the domain you intend to deploy the site on.
-	- Ensure the "App path" is set to `/experiences/[experienceId]`
-	- Ensure the "Discover path" is set to `/discover` 
+## Quick Start
 
-3. Copy the environment variables from the `.env.development` into a `.env.local`. Ensure to use real values from the whop dashboard.
+### Prerequisites
 
-4. Go to a whop created in the same org as the app you created. Navigate to the tools section and add your app.
+- Node.js 18+ 
+- npm, yarn, or pnpm
 
-5. Run `pnpm dev` to start the dev server. Then in the top right of the window find a translucent settings icon. Select "localhost". The default port 3000 should work.
+### Installation
 
-## Deploying
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd nextjs-starter
+   ```
 
-1. Upload your fork / copy of this template to github. 
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-2. Go to [Vercel](https://vercel.com/new) and link the repository. Deploy your application with the environment variables from your `.env.local`
+3. **Set up environment variables**
+   ```bash
+   cp env.example .env.local
+   # Edit .env.local with your values
+   ```
 
-3. If necessary update you "Base Domain" and webhook callback urls on the app settings page on the whop dashboard.
+4. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-## Troubleshooting
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-**App not loading properly?** Make sure to set the "App path" in your Whop developer dashboard. The placeholder text in the UI does not mean it's set - you must explicitly enter `/experiences/[experienceId]` (or your chosen path name)
-a
+## Project Structure
 
-**Make sure to add env.local** Make sure to get the real app environment vairables from your whop dashboard and set them in .env.local
+```
+nextjs-starter/
+├── components/          # Reusable React components
+│   └── Layout.tsx     # Main layout component
+├── pages/              # Next.js pages
+│   ├── api/           # API routes
+│   │   └── health.ts  # Health check endpoint
+│   └── index.tsx      # Home page
+├── public/             # Static assets
+├── styles/             # Global styles
+│   └── globals.css    # Tailwind CSS and custom styles
+├── lib/                # Utility functions and configurations
+├── .env.local          # Environment variables (create from env.example)
+├── next.config.js      # Next.js configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+├── tsconfig.json       # TypeScript configuration
+└── package.json        # Dependencies and scripts
+```
 
+## Available Scripts
 
-For more info, see our docs at https://dev.whop.com/introduction
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
+
+## Environment Variables
+
+Create a `.env.local` file based on `env.example`:
+
+```bash
+# App Configuration
+NEXT_PUBLIC_APP_NAME=Next.js Starter
+
+# API Configuration
+API_KEY=your_api_key_here
+
+# Environment
+NODE_ENV=development
+```
+
+## API Endpoints
+
+### Health Check
+- **GET** `/api/health`
+- Returns: `{ status: "ok", timestamp: "...", environment: "..." }`
+
+## Customization
+
+### Adding New Pages
+1. Create a new file in `pages/` directory
+2. Export a default React component
+3. Use the `Layout` component for consistent styling
+
+### Adding New API Routes
+1. Create a new file in `pages/api/` directory
+2. Export a default function handler
+3. Use Next.js API types for request/response
+
+### Styling
+- Use Tailwind CSS utility classes
+- Custom styles in `styles/globals.css`
+- Component-specific styles with CSS modules if needed
+
+## Deployment
+
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically on every push
+
+### Other Platforms
+1. Run `npm run build`
+2. Deploy the `.next` folder to your hosting platform
+3. Set environment variables in your hosting platform
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details
+
+## Support
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs)
+
+---
+
+Built with ❤️ using Next.js, TypeScript, and Tailwind CSS

@@ -1,0 +1,131 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  whopId    String   @unique
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Workspace relationship
+  workspaceId String?
+  workspace   Workspace? @relation(fields: [workspaceId], references: [id])
+
+  // User's data
+  tasks   Task[]
+  goals   Goal[]
+  metrics Metric[]
+  logs    MetricLog[]
+
+  @@map("users")
+}
+
+model Workspace {
+  id          String   @id @default(cuid())
+  whopCompanyId String @unique
+  name        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Workspace members
+  users User[]
+
+  @@map("workspaces")
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  status      String   @default("PENDING") // TaskStatus as string
+  priority    String   @default("MEDIUM")  // Priority as string
+  dueDate     DateTime?
+  completedAt DateTime?
+  tags        String   @default("[]")      // JSON string of tags
+  recurrence  String?  // Recurrence as string
+  
+  // Relationships
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goalId      String?
+  goal        Goal?        @relation(fields: [goalId], references: [id])
+  
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@map("tasks")
+}
+
+model Goal {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  target      Float
+  current     Float    @default(0)
+  unit        String   // e.g., "calls", "minutes", "dollars"
+  cadence     String   @default("DAILY") // Cadence as string
+  startDate   DateTime @default(now())
+  endDate     DateTime?
+  completedAt DateTime?
+  
+  // Relationships
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tasks       Task[]
+  metricId    String?
+  metric      Metric?      @relation(fields: [metricId], references: [id])
+  
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@map("goals")
+}
+
+model Metric {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  unit        String   // e.g., "calls", "minutes", "dollars"
+  color       String   @default("#3b82f6") // hex color
+  
+  // Relationships
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goals       Goal[]
+  logs        MetricLog[]
+  
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@map("metrics")
+}
+
+model MetricLog {
+  id        String   @id @default(cuid())
+  value     Float
+  date      DateTime @default(now())
+  notes     String?
+  
+  // Relationships
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  metricId  String
+  metric    Metric       @relation(fields: [metricId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@map("metric_logs")
+}
+
