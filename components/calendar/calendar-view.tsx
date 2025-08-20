@@ -84,7 +84,7 @@ export function CalendarView() {
     
     // Add goals to calendar - only if they have a start date, it's not in the past, and they're not completed
     goals.forEach(goal => {
-      if (goal.startDate && goal.startDate >= today && goal.status !== "completed") {
+      if (goal.startDate && goal.startDate >= today && !goal.completedAt) {
         const startDate = new Date(goal.startDate);
         const endDate = new Date(goal.startDate);
         endDate.setHours(23, 59, 59);
